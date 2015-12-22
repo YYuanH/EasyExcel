@@ -19,22 +19,6 @@ import java.io.*;
 import org.apache.poi.ss.examples.ToCSV;
 import org.FRing.ToExcel;
 
-class Cell implements Serializable {
-	private int x, y, z;
-	private String value;
-	private Color color;
-
-	public void setValue (String value) { this.value = value; }
-	public void setX(int x) { this.x = x; }
-	public void setY(int y) { this.y = y; }
-	public void setColor(Color color) { this.color = color; }
-
-	public String getValue() { return value; }
-	public int getX() { return x; }
-	public int getY() { return y; }
-	public Color getColor() { return color; }
-}
-
 public class MainWindow {
 	JFrame frame;
 	Container con;
@@ -45,7 +29,6 @@ public class MainWindow {
 	JMenuItem copy, cut, paste, search, color;
 	JMenuItem about;
 	JDialog dialog;
-	Cell cell[] = new Cell[1000];
 	MyActionListener myActionListener = new MyActionListener();
 	Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 	int screenWidth = (int) screensize.getWidth();
@@ -181,14 +164,11 @@ public class MainWindow {
 				BufferedReader bufferedReader = new BufferedReader(read);
 				NewFile();
 				int col = 0; int row = 0;
-				Cell temp = new Cell();
 				String tempStr;
 				while((tempStr = bufferedReader.readLine()) != null){
 					String[] strBox = tempStr.split(",");
 					while (col < strBox.length) {
-						temp.setValue(strBox[col]);
-						temp.setX(row); temp.setY(col);
-						table.setValueAt(temp.getValue(), temp.getX(), temp.getY());
+						table.setValueAt(strBox[col], row, col);
 						col = col + 1;
 					}
 					col = 0;
@@ -229,14 +209,11 @@ public class MainWindow {
 				BufferedReader bufferedReader = new BufferedReader(read);
 				NewFile();
 				int col = 0; int row = 0;
-				Cell temp = new Cell();
 				String tempStr;
 				while((tempStr = bufferedReader.readLine()) != null){
 					String[] strBox = tempStr.split(",");
 					while (col < strBox.length) {
-						temp.setValue(strBox[col]);
-						temp.setX(row); temp.setY(col);
-						table.setValueAt(temp.getValue(), temp.getX(), temp.getY());
+						table.setValueAt(strBox[col], row, col);
 						col = col + 1;
 					}
 					col = 0;
@@ -423,7 +400,7 @@ public class MainWindow {
 		JButton cancel = new JButton("取消");
 		dialog.add(yes);
 		dialog.add(cancel);
-		dialog.setBounds(screenWidth / 2 - 200 / 2, screenHeight / 2 - 100 / 2, 200, 100);
+		dialog.setBounds(screenWidth / 2 - 200 / 2, screenHeight / 2 - 100 / 2, 200, 70);
 		dialog.setVisible(true);
 		yes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
