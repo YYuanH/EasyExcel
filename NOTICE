@@ -1,17 +1,17 @@
                     5RING EASYEXCEL COPYRIGHT NOTICE
-                       Version 1, December 2015
+                       Version 2, December 2015
 5Ring(R) EasyExcel is an Open-source project under GNU GPLv2. But you should know, 
 some of the packages it uses are under non-GPLv2 licenses. You are supposed to modify 
 this software under the original licenses.
 
 Licenses:
 	Apache License v2.0 (org.apache.poi.*)
-	Open source with no license (org.FRing.*)
+	Open source with no license (org.FRing.*) (Using GNU GPLv2 Now)
 
-Warning:
-	For package org.FRing.*, you should use it for intelligent uses only. Intelligent 
-	uses are defined in Chineses law. 5Ring(R) EasyExcel uses it for scientific research
-  only.
+Notice:
+  Package org.FRing.* has been authorized by original author now, we republish this 
+  under GNU GPLv2.
+
 
 Apache License v2.0:
 
